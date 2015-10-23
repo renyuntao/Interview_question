@@ -1,1 +1,1 @@
-Some C++ program.
+Some interview test.
