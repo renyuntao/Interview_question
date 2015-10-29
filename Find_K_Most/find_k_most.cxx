@@ -183,6 +183,39 @@ void displayMinHeap(MinHeap* minHeap)
        cout<<minHeap->array[i].word<<" : "<<minHeap->array[i].frequency<<endl;
     }
 }
+
+/*
+ * Destroy Min Heap
+ */
+void destroyMinHeap(MinHeap **minHeap)
+{
+	if(*minHeap != NULL)
+	{
+		delete [] (*minHeap)->array;
+		(*minHeap)->array = nullptr;
+		delete *minHeap;
+		*minHeap = nullptr;
+	}
+}
+
+
+/*
+ * Destroy Trie
+ */
+void destroyTrie(TrieNode **root)
+{
+	if(root != NULL && *root != NULL)
+	{
+		for(int i = 0;i < MAX_CHARS;++i)
+		{
+			if((*root)->child[i] != NULL)
+				destroyTrie(&((*root)->child[i]));
+		}
+		delete *root;
+		*root = NULL;
+	}
+}
+
 /* 
  * takes a file as input, add words to heap and Trie
  */ 
@@ -194,7 +227,11 @@ void printKMostFreq(FILE* fp, int k)
     while (fscanf(fp, "%s", buffer) != EOF)
         insertTrieAndHeap(buffer, &root, minHeap);
     displayMinHeap(minHeap);
+	destroyMinHeap(&minHeap);
+	destroyTrie(&root);
 }
+
+
 /* 
  * Main
  */ 
