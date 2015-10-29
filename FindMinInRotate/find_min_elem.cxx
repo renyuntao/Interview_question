@@ -12,7 +12,17 @@ T findMin(T arr[],int length)
 	int middle = (ptr1+ptr2) / 2;
 	while(ptr2 - ptr1 != 1)
 	{
-		if(arr[middle] >= arr[ptr1])    //at first range
+		if(arr[ptr1] == arr[middle] && arr[ptr1] == arr[ptr2])
+		{
+			int min = arr[ptr1];
+			for(int i = ptr1+1;i <= ptr2;++i)
+			{
+				if(min > arr[i])  
+					min = arr[i];
+			}
+			return min;
+		}
+		else if(arr[middle] >= arr[ptr1])    //at first range
 		{
 			ptr1 = middle;
 		}
@@ -27,7 +37,7 @@ T findMin(T arr[],int length)
 
 int main()
 {
-	int arr[] = {3,4,5,6,7,8,9,1,2};
+	int arr[] = {1,0,1,1,1};
 	//char arr[] = {'c','d','e','f','g','g','a','b'};
 	int length = sizeof(arr)/sizeof(arr[0]);
 	cout<<findMin(arr,length)<<endl;
