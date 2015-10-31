@@ -5,8 +5,8 @@ Formula:
 
       ---- a^(n/2) * a^(n/2)    (n is even number)
 a^n = |
-	  |
-	  ---- a^((n-1)/2) * a^((n-1)/2) * a     (n is odd number)
+      |
+      ---- a^((n-1)/2) * a^((n-1)/2) * a     (n is odd number)
 
 """
 
